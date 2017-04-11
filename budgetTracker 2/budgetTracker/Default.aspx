@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="budgetTracker.Default" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -97,6 +99,24 @@
                 </div>
             </div>
             <!-- END: Expense Input Fields -->
+            <!-- Pie Chart -->
+
+        <!-- <div>
+
+            <asp:Chart ID="Chart1" runat="server" DataSourceID="expenseDataSource">
+                <Series>
+                    <asp:Series Name="Series1" ChartType="Pie" XValueMember="10" YValueMembers="10"></asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+
+        </div> -->
+
+        <!-- Pie Chart End -->
 
             <!-- Expense Output Result 
             <table id="tableExpenses" class="table table-hover" runat="server">
@@ -152,11 +172,10 @@
                     <asp:CommandField ButtonType="Link" ShowEditButton="true" CausesValidation="true" ValidationGroup="expEdtGroup" />
                 </Columns>
             </asp:GridView>
-            <asp:ObjectDataSource ID="expenseDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetExpenses" 
-                                  UpdateMethod="UpdateExpense" OnUpdated="expenseDataSource_Updated" ConflictDetection="CompareAllValues"
+            <asp:ObjectDataSource ID="expenseDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetExpenses" OnUpdated="expenseDataSource_Updated" ConflictDetection="CompareAllValues"
                                   TypeName="budgetTracker.ExpenseDB">
                 <SelectParameters>
-                    <asp:SessionParameter Name="userName" SessionField="userName" />
+                    <asp:Parameter Name="userName" Type="String" />
                 </SelectParameters>
             </asp:ObjectDataSource>
             <p>
