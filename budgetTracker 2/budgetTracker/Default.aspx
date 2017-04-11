@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="budgetTracker.Default" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -97,11 +99,21 @@
                 </div>
             </div>
             <!-- END: Expense Input Fields -->
+            <!-- pie chart creation *Need to figure out how to connect data source and get percentages figured out
+            <asp:Chart ID="Chart1" runat="server" DataSourceID="expenseDataSource">
+                <Series>
+                    <asp:Series Name="Series1" ChartType="Pie"></asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
 
             <!-- Expense Output Result 
             <table id="tableExpenses" class="table table-hover" runat="server">
                 <tbody>
                 </tbody>
+            -->
             </table> -->
 
             <asp:GridView ID="expenseGrid" runat="server" DataSourceID="expenseDataSource" AllowPaging="True" 
