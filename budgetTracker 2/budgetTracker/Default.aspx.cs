@@ -202,6 +202,11 @@ namespace budgetTracker
             return ConfigurationManager.ConnectionStrings["UserDataConnectionString"].ConnectionString;
         }
 
+        protected void expenseGrid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /*//This function adds a new label for every expense
         private void addExpenseNameLabel()
         {

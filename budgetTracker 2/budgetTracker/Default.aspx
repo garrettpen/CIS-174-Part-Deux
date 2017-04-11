@@ -99,26 +99,31 @@
                 </div>
             </div>
             <!-- END: Expense Input Fields -->
-            <!-- pie chart creation *Need to figure out how to connect data source and get percentages figured out
-            <asp:Chart ID="Chart1" runat="server" DataSourceID="expenseDataSource">
+            <!-- pie chart creation *Need to figure out how to connect data source and get percentages figured out -->
+            <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1">
                 <Series>
-                    <asp:Series Name="Series1" ChartType="Pie"></asp:Series>
+                    <asp:Series Name="Series1" ChartType="Pie" XValueMember="expName" YValueMembers="expAmount"></asp:Series>
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                 </ChartAreas>
             </asp:Chart>
 
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UserDataConnectionString %>" SelectCommand="SELECT [expAmount], [expName] FROM [expense] WHERE ([userName] = @userName)">
+                <SelectParameters>
+                    <asp:SessionParameter Name="userName" SessionField="userName" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+
             <!-- Expense Output Result 
             <table id="tableExpenses" class="table table-hover" runat="server">
                 <tbody>
                 </tbody>
-            -->
             </table> -->
 
             <asp:GridView ID="expenseGrid" runat="server" DataSourceID="expenseDataSource" AllowPaging="True" 
                           AutoGenerateColumns="False" CssClass="table table-striped table-bordered" 
-                          OnRowDeleted="expenseGrid_RowDeleted" OnRowUpdated="expenseGrid_RowUpdated">
+                          OnRowDeleted="expenseGrid_RowDeleted" OnRowUpdated="expenseGrid_RowUpdated" OnSelectedIndexChanged="expenseGrid_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="ExpenseId" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" />
                     <asp:TemplateField HeaderText="Category" SortExpression="Category">
