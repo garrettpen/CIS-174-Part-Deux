@@ -43,6 +43,7 @@ namespace budgetTracker
                 //If password is correct go to application page
                 if (password == passwordBox.Text)
                 {
+                    Session["userName"] = userNameBox.Text;
                     Response.Redirect("~/Default.aspx");
                 }
                 //prompt for correct password
