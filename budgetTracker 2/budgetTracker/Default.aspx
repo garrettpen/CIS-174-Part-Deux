@@ -101,28 +101,36 @@
             <!-- END: Expense Input Fields -->
             <!-- Pie Chart -->
 
-        <!-- <div>
+        <div>
 
-            <asp:Chart ID="Chart1" runat="server" DataSourceID="expenseDataSource">
+            <asp:Chart ID="crtExpenses" Name="Expenses" runat="server" DataSourceID="SqlDataSource1" OnLoad="Chart1_Load" ToolTip="Expense Pie Chart">
                 <Series>
-                    <asp:Series Name="Series1" ChartType="Pie" XValueMember="10" YValueMembers="10"></asp:Series>
+                    <asp:Series Name="Series1" ChartType="Pie" YValueMembers="expAmount" XValueMember="expCategory"></asp:Series>
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
                 </ChartAreas>
+                <Titles>
+                    <asp:Title Font="Microsoft Sans Serif, 14pt, style=Bold" Name="Expenses" Text="Expenses">
+                    </asp:Title>
+                </Titles>
             </asp:Chart>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UserDataConnectionString %>" SelectCommand="SELECT SUM([expAmount]) 'expAmount', [expCategory] FROM [expense] WHERE ([userName] = @userName) GROUP BY [expCategory]">
+                <SelectParameters>
+                    <asp:SessionParameter Name="userName" SessionField="userName" Type="String"/>
+                </SelectParameters>
+            </asp:SqlDataSource>
 
-        </div> -->
+        </div>
 
         <!-- Pie Chart End -->
 
-            <!-- Expense Output Result 
+            <!--Expense Output Result -->
             <table id="tableExpenses" class="table table-hover" runat="server">
                 <tbody>
                 </tbody>
-            </table> -->
+            </table>
 
             <asp:GridView ID="expenseGrid" runat="server" DataSourceID="expenseDataSource" AllowPaging="True" 
                           AutoGenerateColumns="False" CssClass="table table-striped table-bordered" 
