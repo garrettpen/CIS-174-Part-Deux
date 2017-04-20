@@ -100,20 +100,24 @@
             </div>
             <!-- END: Expense Input Fields -->
             <!-- pie chart creation *Need to figure out how to connect data source and get percentages figured out -->
-            <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1">
+            <asp:Chart ID="crtExpenses" Name="Expenses" runat="server" DataSourceID="SqlDataSource1" ToolTip="Expense Pie Chart">
                 <Series>
-                    <asp:Series Name="Series1" ChartType="Pie" XValueMember="expName" YValueMembers="expAmount"></asp:Series>
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-                </ChartAreas>
-            </asp:Chart>
+                   <asp:Series Name="Series1" ChartType="Pie" YValueMembers="expAmount" XValueMember="expCategory"></asp:Series>
+               </Series>
+               <ChartAreas>
+                   <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+               </ChartAreas>
+               <Titles>
+                   <asp:Title Font="Microsoft Sans Serif, 14pt, style=Bold" Name="Expenses" Text="Expenses">
+                   </asp:Title>
+               </Titles>
+           </asp:Chart>
 
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UserDataConnectionString %>" SelectCommand="SELECT [expAmount], [expName] FROM [expense] WHERE ([userName] = @userName)">
-                <SelectParameters>
-                    <asp:SessionParameter Name="userName" SessionField="userName" Type="String" />
-                </SelectParameters>
-            </asp:SqlDataSource>
+           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UserDataConnectionString %>" SelectCommand="SELECT SUM([expAmount]) 'expAmount', [expCategory] FROM [expense] WHERE ([userName] = @userName) GROUP BY [expCategory]">
+               <SelectParameters>
+                   <asp:SessionParameter Name="userName" SessionField="userName" Type="String" />
+               </SelectParameters>
+           </asp:SqlDataSource>
 
             <!-- Expense Output Result 
             <table id="tableExpenses" class="table table-hover" runat="server">

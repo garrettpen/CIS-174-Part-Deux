@@ -157,13 +157,13 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.Button addExpenseButton;
         
         /// <summary>
-        /// Chart1 control.
+        /// crtExpenses control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart crtExpenses;
         
         /// <summary>
         /// SqlDataSource1 control.
