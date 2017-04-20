@@ -202,11 +202,6 @@ namespace budgetTracker
             return ConfigurationManager.ConnectionStrings["UserDataConnectionString"].ConnectionString;
         }
 
-        protected void Chart1_Load(object sender, EventArgs e)
-        {
-            // Murillo -- some logic so the pie chart will only update the slice that is the category.
-        }
-
         /*//This function adds a new label for every expense
         private void addExpenseNameLabel()
         {
