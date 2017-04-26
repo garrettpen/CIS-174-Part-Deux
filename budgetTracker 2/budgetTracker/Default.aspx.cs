@@ -105,7 +105,7 @@ namespace budgetTracker
             else
                 updSalary(con, salary);
             monthlySalaryLabel.Text = salary.ToString("c");
-            
+            Response.Redirect(Request.RawUrl); //-> c# was being difficult letting me set up insert method...
         }
 
         private void addExpense()
@@ -163,6 +163,7 @@ namespace budgetTracker
             updateRemainingBudget();
             expenseAmountInput.Text = String.Empty;
             expenseNameInput.Text = String.Empty;
+            Response.Redirect(Request.RawUrl); //-> c# was being difficult letting me set up insert method...
         }
 
         protected void expenseGrid_RowUpdated(object sender, GridViewUpdatedEventArgs e)
@@ -195,6 +196,20 @@ namespace budgetTracker
         protected void expenseDataSource_Updated(object sender, ObjectDataSourceStatusEventArgs e)
         {
             e.AffectedRows = Convert.ToInt32(e.ReturnValue);
+            SqlConnection con = new SqlConnection(GetConnectionString());
+            decimal currentSalary;
+            selectSalary(con, out currentSalary);
+            monthlySalaryLabel.Text = currentSalary.ToString("c");
+
+        }
+
+        protected void expenseDataSource_Deleted(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+            e.AffectedRows = Convert.ToInt32(e.ReturnValue);
+            SqlConnection con = new SqlConnection(GetConnectionString());
+            decimal currentSalary;
+            selectSalary(con, out currentSalary);
+            monthlySalaryLabel.Text = currentSalary.ToString("c");
         }
 
         private static string GetConnectionString()

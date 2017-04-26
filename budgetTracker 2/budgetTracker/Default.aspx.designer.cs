@@ -67,24 +67,6 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.Label monthlySalaryLabel;
         
         /// <summary>
-        /// salaryTotalAmt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField salaryTotalAmt;
-        
-        /// <summary>
-        /// salaryCurrentAmt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField salaryCurrentAmt;
-        
-        /// <summary>
         /// ddlExpenseCategory control.
         /// </summary>
         /// <remarks>
