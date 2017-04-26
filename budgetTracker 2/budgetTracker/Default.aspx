@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <asp:Button ID="saveSalaryButton" runat="server" OnClick="saveSalaryButton_Click" 
-                                    ValidationGroup="salaryGroup" Text="Save salary" CssClass="btn btn-primary" />
+                                    ValidationGroup="salaryGroup" Text="Add to Salary" CssClass="btn btn-primary" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,8 +44,6 @@
                         Total Salary Amount: <asp:Label ID="monthlySalaryLabel" runat="server" Text="$0.00"></asp:Label>
                     </div>
                 </div>
-                <asp:hiddenfield id="salaryTotalAmt" runat="server" value="0"></asp:hiddenfield>
-                <asp:hiddenfield id="salaryCurrentAmt" runat="server" value="0"></asp:hiddenfield>
             </div>
             <!-- END: Salary Input Fields -->
 
@@ -99,19 +97,20 @@
                 </div>
             </div>
             <!-- END: Expense Input Fields -->
+
+            <h2>Added Expenses</h2>
+            <hr />
             <!-- pie chart creation *Need to figure out how to connect data source and get percentages figured out -->
-            <asp:Chart ID="crtExpenses" Name="Expenses" runat="server" DataSourceID="SqlDataSource1" ToolTip="Expense Pie Chart">
-                <Series>
-                   <asp:Series Name="Series1" ChartType="Pie" YValueMembers="expAmount" XValueMember="expCategory"></asp:Series>
-               </Series>
-               <ChartAreas>
-                   <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
-               </ChartAreas>
-               <Titles>
-                   <asp:Title Font="Microsoft Sans Serif, 14pt, style=Bold" Name="Expenses" Text="Expenses">
-                   </asp:Title>
-               </Titles>
-           </asp:Chart>
+            <div class="col-xs-4">
+                <asp:Chart ID="crtExpenses" Name="Expenses" runat="server" DataSourceID="SqlDataSource1" ToolTip="Expense Pie Chart">
+                    <Series>
+                       <asp:Series Name="Series1" ChartType="Pie" YValueMembers="expAmount" XValueMember="expCategory"></asp:Series>
+                   </Series>
+                   <ChartAreas>
+                       <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                   </ChartAreas>
+               </asp:Chart>
+            </div>
 
            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UserDataConnectionString %>" SelectCommand="SELECT SUM([expAmount]) 'expAmount', [expCategory] FROM [expense] WHERE ([userName] = @userName) GROUP BY [expCategory]">
                <SelectParameters>
@@ -125,60 +124,72 @@
                 </tbody>
             </table> -->
 
-            <asp:GridView ID="expenseGrid" runat="server" DataSourceID="expenseDataSource" AllowPaging="True" 
-                          AutoGenerateColumns="False" CssClass="table table-striped table-bordered" 
-                          OnRowDeleted="expenseGrid_RowDeleted" OnRowUpdated="expenseGrid_RowUpdated" OnSelectedIndexChanged="expenseGrid_SelectedIndexChanged">
-                <Columns>
-                    <asp:BoundField DataField="ExpenseId" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" />
-                    <asp:TemplateField HeaderText="Category" SortExpression="Category">
-                        <EditItemTemplate>
-                            <asp:dropdownlist runat="server" id="categoryEdt" class="form-control" 
-                                              SelectedValue='<%# Bind("ExpCategory") %>'>
-                                <asp:ListItem Value="other">Other</asp:ListItem>
-                                <asp:ListItem Value="home">Home</asp:ListItem>
-                                <asp:ListItem Value="auto">Auto</asp:ListItem>
-                                <asp:ListItem Value="entertainment">Entertainment</asp:ListItem>
-                                <asp:ListItem Value="food">Food</asp:ListItem>
-                            </asp:dropdownlist>
-                            <asp:RequiredFieldValidator ID="reqDdlExpenseCategory" runat="server" ErrorMessage="Please enter a category." 
-                                                    ControlToValidate="categoryEdt" ValidationGroup="expEdtGroup" Display="None"></asp:RequiredFieldValidator>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="categoryEdtLabel" runat="server" Text='<%# Bind("ExpCategory") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Name" SortExpression="Name">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="nameEdt" runat="server" class="form-control" Text='<%# Bind("ExpName") %>'></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="reqExpenseNameEdt" runat="server" ErrorMessage="Please enter an expense name." 
-                                                    ControlToValidate="nameEdt" ValidationGroup="expEdtGroup" Display="None"></asp:RequiredFieldValidator>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="nameEdtLabel" runat="server" Text='<%# Bind("ExpName") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Amount" SortExpression="Amount">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="amountEdt" runat="server" class="form-control" Text='<%# Bind("ExpAmount") %>'></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="reqExpenseAmountEdt" runat="server" ErrorMessage="Please enter an expense amount." 
-                                                    ControlToValidate="amountEdt" ValidationGroup="expEdtGroup" Display="None"></asp:RequiredFieldValidator>
-                            <asp:regularexpressionvalidator ID="regExExpenseAmountEdt" ControlToValidate="amountEdt" ValidationGroup="expEdtGroup" runat="server" errormessage="Please enter a valid number."
-                                                        ValidationExpression="^[ ]*[\-]?[0-9]*[\.]?[0-9]*[ ]*$" Display="None"></asp:regularexpressionvalidator>
-                        </EditItemTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="amountEdtLabel" runat="server" Text='<%# Bind("ExpAmount") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="ExpPercent" HeaderText="Percentage" SortExpression="Percentage" ReadOnly="True" />
-                    <asp:CommandField ButtonType="Link" ShowEditButton="true" CausesValidation="true" ValidationGroup="expEdtGroup" />
-                </Columns>
-            </asp:GridView>
+            <div class="col-xs-8">
+                <asp:GridView ID="expenseGrid" runat="server" DataSourceID="expenseDataSource" AllowPaging="True" 
+                              AutoGenerateColumns="False" CssClass="table table-striped table-bordered" 
+                              OnRowDeleted="expenseGrid_RowDeleted" OnRowUpdated="expenseGrid_RowUpdated" OnSelectedIndexChanged="expenseGrid_SelectedIndexChanged">
+                    <Columns>
+                        <asp:BoundField DataField="ExpenseId" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" />
+                        <asp:TemplateField HeaderText="Category" SortExpression="Category">
+                            <EditItemTemplate>
+                                <asp:dropdownlist runat="server" id="categoryEdt" class="form-control" 
+                                                  SelectedValue='<%# Bind("ExpCategory") %>'>
+                                    <asp:ListItem Value="other">Other</asp:ListItem>
+                                    <asp:ListItem Value="home">Home</asp:ListItem>
+                                    <asp:ListItem Value="auto">Auto</asp:ListItem>
+                                    <asp:ListItem Value="entertainment">Entertainment</asp:ListItem>
+                                    <asp:ListItem Value="food">Food</asp:ListItem>
+                                </asp:dropdownlist>
+                                <asp:RequiredFieldValidator ID="reqDdlExpenseCategory" runat="server" ErrorMessage="Please enter a category." 
+                                                        ControlToValidate="categoryEdt" ValidationGroup="expEdtGroup" Display="None"></asp:RequiredFieldValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="categoryEdtLabel" runat="server" Text='<%# Bind("ExpCategory") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Name" SortExpression="Name">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="nameEdt" runat="server" class="form-control" Text='<%# Bind("ExpName") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="reqExpenseNameEdt" runat="server" ErrorMessage="Please enter an expense name." 
+                                                        ControlToValidate="nameEdt" ValidationGroup="expEdtGroup" Display="None"></asp:RequiredFieldValidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="nameEdtLabel" runat="server" Text='<%# Bind("ExpName") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Amount" SortExpression="Amount">
+                            <EditItemTemplate>
+                                <asp:TextBox ID="amountEdt" runat="server" class="form-control" Text='<%# Bind("ExpAmount") %>'></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="reqExpenseAmountEdt" runat="server" ErrorMessage="Please enter an expense amount." 
+                                                        ControlToValidate="amountEdt" ValidationGroup="expEdtGroup" Display="None"></asp:RequiredFieldValidator>
+                                <asp:regularexpressionvalidator ID="regExExpenseAmountEdt" ControlToValidate="amountEdt" ValidationGroup="expEdtGroup" runat="server" errormessage="Please enter a valid number."
+                                                            ValidationExpression="^[ ]*[\-]?[0-9]*[\.]?[0-9]*[ ]*$" Display="None"></asp:regularexpressionvalidator>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="amountEdtLabel" runat="server" Text='<%# Bind("ExpAmount") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="ExpPercent" HeaderText="Percentage" SortExpression="Percentage" ReadOnly="True" />
+                        <asp:CommandField ButtonType="Link" ShowEditButton="true" ItemStyle-CssClass="center-text" ControlStyle-CssClass="glyphicon glyphicon-pencil" 
+                                          EditText="" CausesValidation="true" ValidationGroup="expEdtGroup"  />
+                        <asp:CommandField ButtonType="Link" ShowDeleteButton="True" ItemStyle-CssClass="center-text" ControlStyle-CssClass="glyphicon glyphicon-trash" 
+                                          DeleteText="" />
+                    </Columns>
+                </asp:GridView>
+            </div>
             <asp:ObjectDataSource ID="expenseDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetExpenses" 
-                                  UpdateMethod="UpdateExpense" OnUpdated="expenseDataSource_Updated" ConflictDetection="CompareAllValues"
+                                  UpdateMethod="UpdateExpense" DeleteMethod="DeleteExpense" OnUpdated="expenseDataSource_Updated"
+                                  OnDeleted="expenseDataSource_Deleted" ConflictDetection="CompareAllValues" 
                                   TypeName="budgetTracker.ExpenseDB">
                 <SelectParameters>
                     <asp:SessionParameter Name="userName" SessionField="userName" />
                 </SelectParameters>
+                <UpdateParameters>
+                    <asp:SessionParameter Name="userName" SessionField="userName" />
+                </UpdateParameters>
+                <DeleteParameters>
+                    <asp:SessionParameter Name="userName" SessionField="userName" />
+                </DeleteParameters>
             </asp:ObjectDataSource>
             <p>
               <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
