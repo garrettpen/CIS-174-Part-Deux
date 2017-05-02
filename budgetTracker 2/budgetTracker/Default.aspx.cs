@@ -18,20 +18,6 @@ namespace budgetTracker
             decimal currentSalary;
             selectSalary(new SqlConnection(GetConnectionString()), out currentSalary);
             monthlySalaryLabel.Text = currentSalary.ToString("c");
-
-
-
-            if (Session["expenseTable"] != null)
-            {
-                HtmlTable tableExpensesSession = (HtmlTable)Session["expenseTable"];
-                int count = tableExpensesSession.Rows.Count; //need to set count to variable, because it changes
-                for (int i = 0; i < count; i++)
-                {
-                    //Removes from session and then adds to acutal table
-                    //so index will always be 0, because it gets popped off the top
-                    tableExpenses.Rows.Add(tableExpensesSession.Rows[0]); 
-                }
-            }
         }
 
         protected bool selectSalary(SqlConnection con, out decimal currentSalary)
@@ -112,31 +98,6 @@ namespace budgetTracker
         {
             SqlConnection con = new SqlConnection(GetConnectionString());
             insertExpense(con);
-
-
-            /*HtmlTableRow row = new HtmlTableRow();
-            HtmlTableCell cell1 = new HtmlTableCell();
-            HtmlTableCell cell2 = new HtmlTableCell();
-            HtmlTableCell cell3 = new HtmlTableCell();
-            HtmlTableCell cell4 = new HtmlTableCell();
-
-
-            decimal expenseAmount = Decimal.Parse(expenseAmountInput.Text),
-                    curTotalSalary = Decimal.Parse(salaryTotalAmt.Value),
-                    percentValue = (expenseAmount / curTotalSalary) * 100;
-            string category = ddlExpenseCategory.SelectedValue.ToString();
-
-            row.ID = "exp" + (tableExpenses.Rows.Count + 1);
-            cell1.InnerText = ;
-            row.Cells.Add(cell1);
-            cell2.InnerText = expenseAmount.ToString("c");
-            row.Cells.Add(cell2);
-            cell3.InnerText = category;
-            row.Cells.Add(cell3);
-            tableExpenses.Rows.Add(row);
-            cell4.InnerText = Math.Round(percentValue,2) + "%";
-            row.Cells.Add(cell4);
-            Session["expenseTable"] = tableExpenses;*/
         }
 
         //This function updates the remianing monthly budget
@@ -157,8 +118,6 @@ namespace budgetTracker
 
         protected void addExpenseButton_Click(object sender, EventArgs e)
         {
-            //addExpenseNameLabel();
-            //addExpenseAmountLabel();
             addExpense();
             updateRemainingBudget();
             expenseAmountInput.Text = String.Empty;
@@ -216,31 +175,5 @@ namespace budgetTracker
         {
             return ConfigurationManager.ConnectionStrings["UserDataConnectionString"].ConnectionString;
         }
-
-        protected void expenseGrid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        /*//This function adds a new label for every expense
-        private void addExpenseNameLabel()
-        {
-            Label lbl = new Label();
-            lbl.ID = "expense" + i.ToString();
-            lbl.Text = expenseNameInput.Text;
-            this.Controls.Add(lbl);
-            expenseNameInput.Text = String.Empty;
-            i++;
-        }
-
-        //This function adds a new amount label for every expense
-        private void addExpenseAmountLabel()
-        {
-            Label lbl = new Label();
-            lbl.ID = "expenseAmount" + j.ToString();
-            lbl.Text = "$" + expenseAmountInput.Text;
-            this.Controls.Add(lbl);
-            j++;
-        }*/
     }
 }

@@ -118,16 +118,10 @@
                </SelectParameters>
            </asp:SqlDataSource>
 
-            <!-- Expense Output Result 
-            <table id="tableExpenses" class="table table-hover" runat="server">
-                <tbody>
-                </tbody>
-            </table> -->
-
             <div class="col-xs-8">
                 <asp:GridView ID="expenseGrid" runat="server" DataSourceID="expenseDataSource" AllowPaging="True" 
                               AutoGenerateColumns="False" CssClass="table table-striped table-bordered" 
-                              OnRowDeleted="expenseGrid_RowDeleted" OnRowUpdated="expenseGrid_RowUpdated" OnSelectedIndexChanged="expenseGrid_SelectedIndexChanged">
+                              OnRowDeleted="expenseGrid_RowDeleted" OnRowUpdated="expenseGrid_RowUpdated">
                     <Columns>
                         <asp:BoundField DataField="ExpenseId" HeaderText="ID" ReadOnly="True" SortExpression="ProductID" />
                         <asp:TemplateField HeaderText="Category" SortExpression="Category">
