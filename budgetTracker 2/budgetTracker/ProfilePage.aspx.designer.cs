@@ -13,22 +13,40 @@ namespace budgetTracker {
     public partial class ProfilePage {
         
         /// <summary>
-        /// form1 control.
+        /// profilePageForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm profilePageForm;
         
         /// <summary>
-        /// currNameLbl control.
+        /// logOutBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label currNameLbl;
+        protected global::System.Web.UI.WebControls.Button logOutBtn;
+        
+        /// <summary>
+        /// updateStatusPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label updateStatusPanel;
+        
+        /// <summary>
+        /// updateStatusHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label updateStatusHead;
         
         /// <summary>
         /// currentName control.
@@ -40,15 +58,6 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox currentName;
         
         /// <summary>
-        /// newNameLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label newNameLbl;
-        
-        /// <summary>
         /// newName control.
         /// </summary>
         /// <remarks>
@@ -56,15 +65,6 @@ namespace budgetTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox newName;
-        
-        /// <summary>
-        /// reenterNameLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label reenterNameLbl;
         
         /// <summary>
         /// confirmName control.
@@ -76,31 +76,31 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox confirmName;
         
         /// <summary>
-        /// currPasswordLbl control.
+        /// confirmNameComp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label currPasswordLbl;
+        protected global::System.Web.UI.WebControls.CompareValidator confirmNameComp;
         
         /// <summary>
-        /// currentPassword control.
+        /// userNameTaken control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox currentPassword;
+        protected global::System.Web.UI.WebControls.Label userNameTaken;
         
         /// <summary>
-        /// newPasswordLbl control.
+        /// currPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label newPasswordLbl;
+        protected global::System.Web.UI.WebControls.TextBox currPassword;
         
         /// <summary>
         /// newPassword control.
@@ -112,15 +112,6 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox newPassword;
         
         /// <summary>
-        /// reenterPasswordLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label reenterPasswordLbl;
-        
-        /// <summary>
         /// confirmPassword control.
         /// </summary>
         /// <remarks>
@@ -128,5 +119,23 @@ namespace budgetTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirmPassword;
+        
+        /// <summary>
+        /// confirmPassComp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator confirmPassComp;
+        
+        /// <summary>
+        /// updProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button updProfile;
     }
 }

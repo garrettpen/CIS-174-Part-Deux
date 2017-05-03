@@ -15,6 +15,10 @@ namespace budgetTracker
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userName"] == null) //kick user out if session doesn't exist
+            {
+                Response.Redirect("Login.aspx");
+            }
             decimal currentSalary;
             selectSalary(new SqlConnection(GetConnectionString()), out currentSalary);
             monthlySalaryLabel.Text = currentSalary.ToString("c");
@@ -174,6 +178,12 @@ namespace budgetTracker
         private static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings["UserDataConnectionString"].ConnectionString;
+        }
+
+        protected void logOutBtn_Click(object sender, EventArgs e) //log user out
+        {
+            Session.Remove("userName");
+            Response.Redirect("Login.aspx");
         }
     }
 }

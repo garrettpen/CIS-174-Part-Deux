@@ -13,22 +13,31 @@ namespace budgetTracker {
     public partial class Login {
         
         /// <summary>
-        /// form1 control.
+        /// budgetTrackerLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm budgetTrackerLogin;
         
         /// <summary>
-        /// userNamelbl control.
+        /// updateStatusPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userNamelbl;
+        protected global::System.Web.UI.WebControls.Label updateStatusPanel;
+        
+        /// <summary>
+        /// updateStatusHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label updateStatusHead;
         
         /// <summary>
         /// userNameBox control.
@@ -40,15 +49,6 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox userNameBox;
         
         /// <summary>
-        /// passwordlbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label passwordlbl;
-        
-        /// <summary>
         /// passwordBox control.
         /// </summary>
         /// <remarks>
@@ -58,12 +58,12 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox passwordBox;
         
         /// <summary>
-        /// Button1 control.
+        /// loginBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button loginBtn;
     }
 }
