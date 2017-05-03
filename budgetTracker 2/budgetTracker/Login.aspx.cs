@@ -13,7 +13,14 @@ namespace budgetTracker
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //will only hit this if user was added
+            if (Session["addedUser"] != null)
+            {
+                Session.Remove("addedUser");
+                updateStatusPanel.CssClass = "disBlock panel panel-success";
+                updateStatusHead.CssClass = "disBlock panel-heading";
+                updateStatusHead.Text = "You were successfully registered!";
+            }
         }
 
         protected void loginButton_Click(object sender, EventArgs e)
@@ -49,13 +56,17 @@ namespace budgetTracker
                 //prompt for correct password
                 else
                 {
-                    Response.Write("Incorrect password. Please try again.");
+                    updateStatusPanel.CssClass = "disBlock panel panel-danger";
+                    updateStatusHead.CssClass = "disBlock panel-heading";
+                    updateStatusHead.Text = "Incorrect password. Please try again.";
                 }
             }
             //prompt for correct username
             else
             {
-                Response.Write("Incorrect user name. Please try again.");
+                updateStatusPanel.CssClass = "disBlock panel panel-danger";
+                updateStatusHead.CssClass = "disBlock panel-heading";
+                updateStatusHead.Text = "Incorrect username. Please try again.";
             }
         }
 

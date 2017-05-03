@@ -13,22 +13,31 @@ namespace budgetTracker {
     public partial class Register {
         
         /// <summary>
-        /// form1 control.
+        /// budgetTrackerRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm budgetTrackerRegister;
         
         /// <summary>
-        /// userNamelbl control.
+        /// updateStatusPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userNamelbl;
+        protected global::System.Web.UI.WebControls.Label updateStatusPanel;
+        
+        /// <summary>
+        /// updateStatusHead control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label updateStatusHead;
         
         /// <summary>
         /// rUserNameBox control.
@@ -40,13 +49,13 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox rUserNameBox;
         
         /// <summary>
-        /// emailLbl control.
+        /// reqUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emailLbl;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqUsername;
         
         /// <summary>
         /// rEmailBox control.
@@ -58,13 +67,22 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox rEmailBox;
         
         /// <summary>
-        /// passwordlbl control.
+        /// reqEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label passwordlbl;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqEmail;
+        
+        /// <summary>
+        /// regExEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regExEmail;
         
         /// <summary>
         /// rPasswordBox control.
@@ -76,13 +94,13 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox rPasswordBox;
         
         /// <summary>
-        /// confirmPasswordlbl control.
+        /// reqPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label confirmPasswordlbl;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqPassword;
         
         /// <summary>
         /// confirmPasswordBox control.
@@ -92,6 +110,24 @@ namespace budgetTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirmPasswordBox;
+        
+        /// <summary>
+        /// reqConfirmPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqConfirmPass;
+        
+        /// <summary>
+        /// confirmPassComp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator confirmPassComp;
         
         /// <summary>
         /// registerButton control.

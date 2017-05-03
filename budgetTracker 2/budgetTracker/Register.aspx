@@ -5,39 +5,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Registration Page</title>
-    <link rel="stylesheet" type="text/css" href="content/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="content/custom.css" />
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="Content/Custom.css" />
 </head>
 <body>
-    <form id="form1" runat="server">
-      <div class="center"><h1>Budget Tracker Registration</h1></div>
-        <div class="container">
-            <div class="center">
-               <div class="vert">
-                <table style="margin-left:auto; margin-right:auto;">
-                    <tr>
-                        <td><asp:Label ID="userNamelbl"  runat="server" Text="User Name"></asp:Label></td>
-                        <td><asp:TextBox ID="rUserNameBox" class="form-control" runat="server"></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td><asp:Label ID="emailLbl"  runat="server" Text="Email"></asp:Label></td>
-                        <td><asp:TextBox ID="rEmailBox" class="form-control" runat="server" ></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td><asp:Label ID="passwordlbl"  runat="server" Text="Password"></asp:Label></td>
-                        <td><asp:TextBox ID="rPasswordBox" class="form-control" runat="server" ></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td><asp:Label ID="confirmPasswordlbl"  runat="server" Text="Confirm Password"></asp:Label></td>
-                        <td><asp:TextBox ID="confirmPasswordBox" class="form-control" runat="server" ></asp:TextBox></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><asp:Button ID="registerButton" runat="server" class="btn btn-primary btn-space" Text="Register" OnClick="registerButton_Click" /></td>
-                    </tr>
-                </table>
-                   </div>
+    <div class="container maxWidthContainerSm">
+        <form id="budgetTrackerRegister" runat="server" class="form-horizontal">
+            <h1 class="disInlineBlock">Budget Tracker Registration</h1>
+            <a href="Login.aspx" class="btn btn-primary menuBtn" title="Login Page">Login Page</a>
+            <hr />
+            <asp:Label ID="updateStatusPanel" runat="server" CssClass="disNone">
+                <asp:Label ID="updateStatusHead" runat="server" Text="" CssClass="disNone"></asp:Label>
+            </asp:Label>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="currentName">Username: </label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="rUserNameBox" runat="server" class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqUsername" runat="server" ErrorMessage="Please enter a username." 
+                                                ControlToValidate="rUserNameBox" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+                </div>
             </div>
-        </div>
-    </form>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="currentName">Email: </label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="rEmailBox" runat="server" class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqEmail" runat="server" ErrorMessage="Please enter an email." 
+                                                ControlToValidate="rEmailBox" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:regularexpressionvalidator ID="regExEmail" ControlToValidate="rEmailBox" runat="server" errormessage="Please enter a valid email."
+                                                    ValidationExpression="^\S+@\S+$" Display="Dynamic" CssClass="text-danger"></asp:regularexpressionvalidator>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="currentName">Password: </label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="rPasswordBox" runat="server" class="form-control" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqPassword" runat="server" ErrorMessage="Please enter a password." 
+                                                ControlToValidate="rPasswordBox" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="currentName">Confirm Password: </label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="confirmPasswordBox" runat="server" class="form-control" TextMode="Password"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="reqConfirmPass" runat="server" ErrorMessage="Please confirm password." 
+                                                ControlToValidate="confirmPasswordBox" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+                    <asp:CompareValidator ID="confirmPassComp" runat="server" ErrorMessage="Passwords must be equal." ControlToCompare="rPasswordBox" 
+                                            ControlToValidate="confirmPasswordBox" Display="Dynamic" CssClass="text-danger"></asp:CompareValidator>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <asp:Button ID="registerButton" runat="server" class="btn btn-primary btn-space" Text="Register" OnClick="registerButton_Click" CausesValidation="true" />
+                </div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

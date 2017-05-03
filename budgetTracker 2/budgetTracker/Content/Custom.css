@@ -16,3 +16,28 @@
     text-align: center;
 }
 
+.disInlineBlock {
+    display:inline-block;
+}
+
+.disBlock {
+    display: block;
+}
+
+.disNone {
+    display: none;
+}
+
+.menuBtn {
+    display:inline-block;
+    margin: 0 0 10px 10px;
+}
+
+.maxWidthContainerSm {
+    max-width:650px;
+}
+
+.maxWidthContainerMd {
+    max-width: 800px;
+}
+
