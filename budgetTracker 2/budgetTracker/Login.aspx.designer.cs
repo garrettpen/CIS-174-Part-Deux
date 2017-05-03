@@ -40,6 +40,15 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox userNameBox;
         
         /// <summary>
+        /// userNameRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator userNameRequired;
+        
+        /// <summary>
         /// passwordlbl control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace budgetTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox passwordBox;
+        
+        /// <summary>
+        /// passwordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator passwordRequired;
         
         /// <summary>
         /// Button1 control.

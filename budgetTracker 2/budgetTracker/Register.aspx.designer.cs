@@ -40,6 +40,15 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox rUserNameBox;
         
         /// <summary>
+        /// userNameValidato1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator userNameValidato1;
+        
+        /// <summary>
         /// emailLbl control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace budgetTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox rEmailBox;
+        
+        /// <summary>
+        /// emailValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator emailValidator;
         
         /// <summary>
         /// passwordlbl control.
@@ -76,6 +94,15 @@ namespace budgetTracker {
         protected global::System.Web.UI.WebControls.TextBox rPasswordBox;
         
         /// <summary>
+        /// passwordValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator passwordValidator1;
+        
+        /// <summary>
         /// confirmPasswordlbl control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,24 @@ namespace budgetTracker {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirmPasswordBox;
+        
+        /// <summary>
+        /// passwordValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator passwordValidator2;
+        
+        /// <summary>
+        /// passwordCompareValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator passwordCompareValidator;
         
         /// <summary>
         /// registerButton control.
